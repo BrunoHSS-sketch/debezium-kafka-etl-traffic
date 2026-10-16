@@ -1,0 +1,134 @@
+[2026-10-16T02:17:17.858+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_transito_local.carregar_csv_postgres manual__2026-10-16T02:16:00.676794+00:00 [queued]>
+[2026-10-16T02:17:17.883+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_transito_local.carregar_csv_postgres manual__2026-10-16T02:16:00.676794+00:00 [queued]>
+[2026-10-16T02:17:17.884+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2026-10-16T02:17:18.160+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): carregar_csv_postgres> on 2026-10-16 02:16:00.676794+00:00
+[2026-10-16T02:17:18.168+0000] {standard_task_runner.py:60} INFO - Started process 179 to run task
+[2026-10-16T02:17:18.175+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_transito_local', 'carregar_csv_postgres', 'manual__2026-10-16T02:16:00.676794+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/traffic_pipeline_dag.py', '--cfg-path', '/tmp/tmpb2mhz73n']
+[2026-10-16T02:17:18.178+0000] {standard_task_runner.py:88} INFO - Job 16: Subtask carregar_csv_postgres
+[2026-10-16T02:17:18.448+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_transito_local.carregar_csv_postgres manual__2026-10-16T02:16:00.676794+00:00 [running]> on host d7e25273cd8e
+[2026-10-16T02:17:18.827+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_transito_local' AIRFLOW_CTX_TASK_ID='carregar_csv_postgres' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T02:16:00.676794+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-16T02:16:00.676794+00:00'
+[2026-10-16T02:17:18.829+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-16T02:17:18.831+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/raw/data_injection.py']
+[2026-10-16T02:17:18.855+0000] {subprocess.py:86} INFO - Output:
+[2026-10-16T02:17:26.733+0000] {subprocess.py:93} INFO - Lendo os arquivos CSV com Pandas (delimitador correto ';')...
+[2026-10-16T02:17:26.733+0000] {subprocess.py:93} INFO - Total de registros em acidentes: 132544
+[2026-10-16T02:17:26.734+0000] {subprocess.py:93} INFO - Total de registros em datatran: 48712
+[2026-10-16T02:17:26.734+0000] {subprocess.py:93} INFO - Salvando 'tb_acidentes' no PostgreSQL...
+[2026-10-16T02:17:28.301+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-10-16T02:17:28.302+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+[2026-10-16T02:17:28.303+0000] {subprocess.py:93} INFO -     return fn()
+[2026-10-16T02:17:28.304+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+[2026-10-16T02:17:28.304+0000] {subprocess.py:93} INFO -     return _ConnectionFairy._checkout(self)
+[2026-10-16T02:17:28.305+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+[2026-10-16T02:17:28.305+0000] {subprocess.py:93} INFO -     fairy = _ConnectionRecord.checkout(pool)
+[2026-10-16T02:17:28.306+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+[2026-10-16T02:17:28.306+0000] {subprocess.py:93} INFO -     rec = pool._do_get()
+[2026-10-16T02:17:28.307+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+[2026-10-16T02:17:28.307+0000] {subprocess.py:93} INFO -     self._dec_overflow()
+[2026-10-16T02:17:28.308+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+[2026-10-16T02:17:28.308+0000] {subprocess.py:93} INFO -     compat.raise_(
+[2026-10-16T02:17:28.308+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2026-10-16T02:17:28.309+0000] {subprocess.py:93} INFO -     raise exception
+[2026-10-16T02:17:28.309+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+[2026-10-16T02:17:28.310+0000] {subprocess.py:93} INFO -     return self._create_connection()
+[2026-10-16T02:17:28.310+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+[2026-10-16T02:17:28.310+0000] {subprocess.py:93} INFO -     return _ConnectionRecord(self)
+[2026-10-16T02:17:28.310+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+[2026-10-16T02:17:28.311+0000] {subprocess.py:93} INFO -     self.__connect()
+[2026-10-16T02:17:28.311+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+[2026-10-16T02:17:28.311+0000] {subprocess.py:93} INFO -     pool.logger.debug("Error on connect(): %s", e)
+[2026-10-16T02:17:28.311+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+[2026-10-16T02:17:28.312+0000] {subprocess.py:93} INFO -     compat.raise_(
+[2026-10-16T02:17:28.312+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2026-10-16T02:17:28.312+0000] {subprocess.py:93} INFO -     raise exception
+[2026-10-16T02:17:28.312+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+[2026-10-16T02:17:28.313+0000] {subprocess.py:93} INFO -     self.dbapi_connection = connection = pool._invoke_creator(self)
+[2026-10-16T02:17:28.313+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+[2026-10-16T02:17:28.313+0000] {subprocess.py:93} INFO -     return dialect.connect(*cargs, **cparams)
+[2026-10-16T02:17:28.314+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+[2026-10-16T02:17:28.314+0000] {subprocess.py:93} INFO -     return self.dbapi.connect(*cargs, **cparams)
+[2026-10-16T02:17:28.314+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+[2026-10-16T02:17:28.314+0000] {subprocess.py:93} INFO -     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[2026-10-16T02:17:28.315+0000] {subprocess.py:93} INFO - psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+[2026-10-16T02:17:28.315+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2026-10-16T02:17:28.315+0000] {subprocess.py:93} INFO - connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+[2026-10-16T02:17:28.315+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2026-10-16T02:17:28.315+0000] {subprocess.py:93} INFO - 
+[2026-10-16T02:17:28.316+0000] {subprocess.py:93} INFO - 
+[2026-10-16T02:17:28.316+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2026-10-16T02:17:28.316+0000] {subprocess.py:93} INFO - 
+[2026-10-16T02:17:28.316+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-10-16T02:17:28.317+0000] {subprocess.py:93} INFO -   File "/opt/airflow/src/raw/data_injection.py", line 17, in <module>
+[2026-10-16T02:17:28.317+0000] {subprocess.py:93} INFO -     df_acidentes.to_sql('tb_acidentes', engine, if_exists='replace', index=False, chunksize=10000)
+[2026-10-16T02:17:28.317+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+[2026-10-16T02:17:28.317+0000] {subprocess.py:93} INFO -     return sql.to_sql(
+[2026-10-16T02:17:28.318+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 768, in to_sql
+[2026-10-16T02:17:28.318+0000] {subprocess.py:93} INFO -     with pandasSQL_builder(con, schema=schema, need_transaction=True) as pandas_sql:
+[2026-10-16T02:17:28.319+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 832, in pandasSQL_builder
+[2026-10-16T02:17:28.319+0000] {subprocess.py:93} INFO -     return SQLDatabase(con, schema, need_transaction)
+[2026-10-16T02:17:28.319+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1539, in __init__
+[2026-10-16T02:17:28.320+0000] {subprocess.py:93} INFO -     con = self.exit_stack.enter_context(con.connect())
+[2026-10-16T02:17:28.320+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+[2026-10-16T02:17:28.320+0000] {subprocess.py:93} INFO -     return self._connection_cls(self, close_with_result=close_with_result)
+[2026-10-16T02:17:28.321+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+[2026-10-16T02:17:28.321+0000] {subprocess.py:93} INFO -     else engine.raw_connection()
+[2026-10-16T02:17:28.321+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+[2026-10-16T02:17:28.322+0000] {subprocess.py:93} INFO -     return self._wrap_pool_connect(self.pool.connect, _connection)
+[2026-10-16T02:17:28.323+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+[2026-10-16T02:17:28.323+0000] {subprocess.py:93} INFO -     Connection._handle_dbapi_exception_noconnection(
+[2026-10-16T02:17:28.323+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+[2026-10-16T02:17:28.324+0000] {subprocess.py:93} INFO -     util.raise_(
+[2026-10-16T02:17:28.324+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2026-10-16T02:17:28.324+0000] {subprocess.py:93} INFO -     raise exception
+[2026-10-16T02:17:28.324+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+[2026-10-16T02:17:28.325+0000] {subprocess.py:93} INFO -     return fn()
+[2026-10-16T02:17:28.325+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+[2026-10-16T02:17:28.325+0000] {subprocess.py:93} INFO -     return _ConnectionFairy._checkout(self)
+[2026-10-16T02:17:28.325+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+[2026-10-16T02:17:28.325+0000] {subprocess.py:93} INFO -     fairy = _ConnectionRecord.checkout(pool)
+[2026-10-16T02:17:28.326+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+[2026-10-16T02:17:28.326+0000] {subprocess.py:93} INFO -     rec = pool._do_get()
+[2026-10-16T02:17:28.326+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+[2026-10-16T02:17:28.327+0000] {subprocess.py:93} INFO -     self._dec_overflow()
+[2026-10-16T02:17:28.327+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+[2026-10-16T02:17:28.327+0000] {subprocess.py:93} INFO -     compat.raise_(
+[2026-10-16T02:17:28.327+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2026-10-16T02:17:28.327+0000] {subprocess.py:93} INFO -     raise exception
+[2026-10-16T02:17:28.328+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+[2026-10-16T02:17:28.328+0000] {subprocess.py:93} INFO -     return self._create_connection()
+[2026-10-16T02:17:28.328+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+[2026-10-16T02:17:28.328+0000] {subprocess.py:93} INFO -     return _ConnectionRecord(self)
+[2026-10-16T02:17:28.329+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+[2026-10-16T02:17:28.329+0000] {subprocess.py:93} INFO -     self.__connect()
+[2026-10-16T02:17:28.329+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+[2026-10-16T02:17:28.329+0000] {subprocess.py:93} INFO -     pool.logger.debug("Error on connect(): %s", e)
+[2026-10-16T02:17:28.330+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+[2026-10-16T02:17:28.330+0000] {subprocess.py:93} INFO -     compat.raise_(
+[2026-10-16T02:17:28.330+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2026-10-16T02:17:28.330+0000] {subprocess.py:93} INFO -     raise exception
+[2026-10-16T02:17:28.331+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+[2026-10-16T02:17:28.331+0000] {subprocess.py:93} INFO -     self.dbapi_connection = connection = pool._invoke_creator(self)
+[2026-10-16T02:17:28.331+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+[2026-10-16T02:17:28.331+0000] {subprocess.py:93} INFO -     return dialect.connect(*cargs, **cparams)
+[2026-10-16T02:17:28.332+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+[2026-10-16T02:17:28.332+0000] {subprocess.py:93} INFO -     return self.dbapi.connect(*cargs, **cparams)
+[2026-10-16T02:17:28.332+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+[2026-10-16T02:17:28.332+0000] {subprocess.py:93} INFO -     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[2026-10-16T02:17:28.332+0000] {subprocess.py:93} INFO - sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+[2026-10-16T02:17:28.333+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2026-10-16T02:17:28.333+0000] {subprocess.py:93} INFO - connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+[2026-10-16T02:17:28.333+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2026-10-16T02:17:28.333+0000] {subprocess.py:93} INFO - 
+[2026-10-16T02:17:28.334+0000] {subprocess.py:93} INFO - (Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2026-10-16T02:17:28.476+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-10-16T02:17:28.523+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-10-16T02:17:28.529+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=pipeline_transito_local, task_id=carregar_csv_postgres, execution_date=20261016T021600, start_date=20261016T021717, end_date=20261016T021728
+[2026-10-16T02:17:28.755+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 16 for task carregar_csv_postgres (Bash command failed. The command returned a non-zero exit code 1.; 179)
+[2026-10-16T02:17:28.783+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-16T02:17:28.845+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

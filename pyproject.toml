@@ -1,0 +1,15 @@
+[project]
+name = "debezium-kafka-etl-traffic"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "adbc-driver-postgresql>=1.12.0",
+    "apache-airflow>=3.3.2",
+    "confluent-kafka>=2.16.0",
+    "connectorx>=0.4.6",
+    "pandas>=3.0.6",
+    "polars[rtcompat]>=2.0.0",
+    "psycopg>=3.3.6",
+    "psycopg2-binary>=2.9.13",
+    "sqlalchemy>=2.1.4",
+]
