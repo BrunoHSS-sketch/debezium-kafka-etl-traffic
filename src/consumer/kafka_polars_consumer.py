@@ -12,7 +12,7 @@ os.environ["POLARS_SKIP_CPU_CHECK"] = "1"
 
 
 conf = {
-    'bootstrap.servers': 'localhost:9092',
+    'bootstrap.servers': 'kafka:9092',
     'group.id': 'polars-traffic-parquet-group',
     'auto.offset.reset': 'earliest',
     'enable.auto.commit': True
